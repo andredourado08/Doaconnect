@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doaconnect - Pontos de doação em SJRP</title>
+    <meta name="description" content="Encontre pontos de doação em São José do Rio Preto para doar roupas, alimentos, livros, brinquedos e itens de higiene.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="assets/css/main.css?v=2">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=1">
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="./" class="logo">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Doaconnect</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Início</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#" id="navDoacoesLink">Pontos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <div class="nav-buttons" id="navButtons">
+                <a href="#" class="btn btn-outline" id="queroDoarHeader"><i class="fas fa-gift"></i> Quero doar</a>
+                <a href="#" class="btn btn-primary" id="precisoHeader"><i class="fas fa-plus"></i> Indicar ponto</a>
+                <button class="dark-toggle" id="darkToggle" aria-label="Alternar modo escuro"><i class="fas fa-moon"></i></button>
+            </div>
+
+            <div class="nav-user hidden" id="navUser">
+                <span id="userName"></span>
+                <a href="#" class="btn btn-outline" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                <button class="dark-toggle" id="darkToggle2" aria-label="Alternar modo escuro"><i class="fas fa-moon"></i></button>
+            </div>
+
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN ==================== -->
+    <main>
+        <div id="toastContainer"></div>
+
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="container hero-grid">
+                <article class="hero-content" data-aos="fade-right" data-aos-duration="800">
+                    <span class="hero-badge"><i class="fas fa-map-pin"></i> São José do Rio Preto - SP</span>
+                    <h1>Encontre onde doar<br>na sua cidade</h1>
+                    <p class="hero-description">O Doaconnect ajuda você a localizar pontos de coleta para doar roupas, alimentos, livros, brinquedos e itens de higiene com mais segurança.</p>
+                    <nav class="hero-actions">
+                        <a href="#" class="btn btn-primary" id="queroDoarHero"><i class="fas fa-location-dot"></i> Ver pontos de doação</a>
+                        <a href="#" class="btn btn-light" id="verNecessidadesBtn"><i class="fas fa-filter"></i> Filtrar por item</a>
+                    </nav>
+                </article>
+                <figure class="hero-image" data-aos="fade-left" data-aos-duration="800">
+                    <i class="fas fa-map-location-dot"></i>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Estatísticas -->
+        <section class="stats-section container" data-aos="fade-up" data-aos-duration="700">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-location-dot"></i></div>
+                    <div class="stat-number" id="statDoacoes">12</div>
+                    <div class="stat-label">Pontos mapeados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="stat-number" id="statUsuarios">6</div>
+                    <div class="stat-label">Categorias de doação</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="stat-number" id="statItens">35</div>
+                    <div class="stat-label">Tipos de itens aceitos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-school"></i></div>
+                    <div class="stat-number" id="statFamilias">1</div>
+                    <div class="stat-label">Projeto escolar</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="container" data-aos="zoom-in" data-aos-duration="600">
+            <aside class="cta-section">
+                <div class="cta-content">
+                    <h3>Tem algo para doar?</h3>
+                    <p>Escolha a categoria, confira o endereço e fale com o local antes de levar sua doação.</p>
+                </div>
+                <a href="#" class="cta-btn" id="criarContaBtn"><i class="fas fa-map-pin"></i> Ver pontos próximos</a>
+            </aside>
+        </section>
+
+        <!-- Etapas -->
+        <section class="steps-section" id="como-funciona">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Como usar o Doaconnect</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Em três passos você encontra o destino certo para sua doação</p>
+                <ul class="steps-grid">
+                    <li class="step-card" data-aos="fade-up" data-aos-delay="200">
+                        <figure class="step-icon"><i class="fas fa-box"></i></figure>
+                        <h3>1. Escolha o item</h3>
+                        <p>Separe roupas, alimentos, livros, brinquedos ou produtos de higiene.</p>
+                    </li>
+                    <li class="step-card" data-aos="fade-up" data-aos-delay="300">
+                        <figure class="step-icon"><i class="fas fa-location-dot"></i></figure>
+                        <h3>2. Encontre um ponto</h3>
+                        <p>Use os filtros para ver locais que recebem aquele tipo de doação.</p>
+                    </li>
+                    <li class="step-card" data-aos="fade-up" data-aos-delay="400">
+                        <figure class="step-icon"><i class="fas fa-phone"></i></figure>
+                        <h3>3. Confirme e doe</h3>
+                        <p>Confira horário, endereço e contato antes de sair de casa.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Destaques -->
+        <section class="donations-section" id="destaquesSection">
+            <div class="container">
+                <header class="section-header" data-aos="fade-up">
+                    <h2><i class="fas fa-map-location-dot"></i> Pontos de doação em destaque</h2>
+                    <nav class="filter-tabs">
+                        <button class="filter-tab active" data-filter="todas">Todos</button>
+                        <button class="filter-tab" data-filter="roupas">Roupas</button>
+                        <button class="filter-tab" data-filter="alimentos">Alimentos</button>
+                        <button class="filter-tab" data-filter="higiene">Higiene</button>
+                        <button class="filter-tab" data-filter="brinquedos">Brinquedos</button>
+                    </nav>
+                </header>
+                <ul class="cards-grid" id="cardsGrid"></ul>
+                <footer class="section-footer section-footer-centered" data-aos="fade-up">
+                    <a href="#" class="btn btn-outline" id="verTodasDoacoesBtn">Ver todos os pontos <i class="fas fa-arrow-right"></i></a>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Todos os pontos -->
+        <section class="all-donations-section" id="allDonationsSection">
+            <div class="container">
+                <button class="btn btn-outline back-to-highlights" id="backToDestaquesBtn"><i class="fas fa-arrow-left"></i> Voltar aos destaques</button>
+                <header class="section-header" data-aos="fade-up">
+                    <h2><i class="fas fa-list"></i> Todos os pontos de doação em SJRP</h2>
+                    <nav class="filter-tabs" id="allFilterTabs">
+                        <button class="filter-tab active" data-filter="todas">Todos</button>
+                        <button class="filter-tab" data-filter="roupas">Roupas</button>
+                        <button class="filter-tab" data-filter="alimentos">Alimentos</button>
+                        <button class="filter-tab" data-filter="higiene">Higiene</button>
+                        <button class="filter-tab" data-filter="brinquedos">Brinquedos</button>
+                    </nav>
+                </header>
+                <ul class="cards-grid" id="allCardsGrid"></ul>
+            </div>
+        </section>
+
+        <!-- Dicas -->
+        <section class="donation-tips-section" id="dicas">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Antes de doar</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Pequenos cuidados fazem a doação chegar melhor a quem precisa</p>
+                <div class="tips-grid">
+                    <article class="tip-card">
+                        <i class="fas fa-shirt"></i>
+                        <h3>Itens limpos</h3>
+                        <p>Roupas, calçados e brinquedos devem estar limpos e em bom estado.</p>
+                    </article>
+                    <article class="tip-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Validade</h3>
+                        <p>Alimentos e produtos de higiene precisam estar dentro do prazo de validade.</p>
+                    </article>
+                    <article class="tip-card">
+                        <i class="fas fa-phone-volume"></i>
+                        <h3>Confirmação</h3>
+                        <p>Ligue ou mande mensagem antes para confirmar horários e necessidades atuais.</p>
+                    </article>
+                    <article class="tip-card">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Organização</h3>
+                        <p>Separe por tipo de item e, se possível, identifique sacolas e caixas.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section class="school-note-section" id="sobre">
+            <div class="container">
+                <article class="school-note">
+                    <div>
+                        <h2>Sobre o projeto</h2>
+                        <p>O Doaconnect é uma proposta escolar criada para informar a comunidade sobre locais que recebem doações em São José do Rio Preto.</p>
+                    </div>
+                    <p>A ideia é facilitar a solidariedade: quem quer doar encontra onde levar, o que cada ponto recebe e como confirmar informações antes da entrega.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="testimonials-section" id="depoimentos">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Impacto das doações</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Exemplos de como uma doação simples pode transformar a rotina de alguém</p>
+                <div class="testimonials-grid" id="testimonialsGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <nav class="footer-grid">
+                <section class="footer-col">
+                    <h4><i class="fas fa-hand-holding-heart"></i> Doaconnect</h4>
+                    <p>Informando pontos de doação em SJRP.</p>
+                </section>
+                <section class="footer-col">
+                    <h4>Navegue</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#como-funciona">Como funciona</a></li>
+                        <li><a href="#" id="footerDoacoesLink">Pontos de doação</a></li>
+                        <li><a href="#dicas">Antes de doar</a></li>
+                    </ul>
+                </section>
+                <section class="footer-col">
+                    <h4>Categorias</h4>
+                    <ul>
+                        <li><a href="#">Alimentos</a></li>
+                        <li><a href="#">Roupas</a></li>
+                        <li><a href="#">Móveis</a></li>
+                        <li><a href="#">Eletrodomésticos</a></li>
+                    </ul>
+                </section>
+                <section class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@doasjrp.org</li>
+                        <li><i class="fas fa-phone"></i> (17) 9 9999-1234</li>
+                        <li><i class="fas fa-map-pin"></i> SJRP, SP</li>
+                    </ul>
+                </section>
+            </nav>
+            <div class="footer-bottom">
+                <span>(c) 2026 Doaconnect - Projeto escolar de impacto social</span>
+                <nav class="social-icons" aria-label="Redes sociais">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAIS ==================== -->
+    <dialog class="modal-overlay" id="modalCadastro">
+        <article class="modal">
+            <button class="modal-close" id="closeCadastroModal" aria-label="Fechar">&times;</button>
+            <h2>Criar conta</h2>
+            <form id="formCadastro">
+                <label class="form-group">Nome completo
+                    <input type="text" name="nome" placeholder="Seu nome" required>
+                </label>
+                <label class="form-group">E-mail
+                    <input type="email" name="email" placeholder="email@exemplo.com" required>
+                </label>
+                <label class="form-group">Senha
+                    <input type="password" name="senha" placeholder="******" required minlength="6">
+                </label>
+                <label class="form-group">Tipo de usuário
+                    <select name="tipo">
+                        <option value="doador">Doador</option>
+                        <option value="preciso">Preciso de ajuda</option>
+                        <option value="ambos">Ambos</option>
+                    </select>
+                </label>
+                <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+                <p class="modal-footer">Já tem conta? <a href="#" id="linkLogin">Entrar</a></p>
+            </form>
+        </article>
+    </dialog>
+
+    <dialog class="modal-overlay" id="modalLogin">
+        <article class="modal">
+            <button class="modal-close" id="closeLoginModal" aria-label="Fechar">&times;</button>
+            <h2>Entrar</h2>
+            <form id="formLogin">
+                <label class="form-group">E-mail
+                    <input type="email" name="email" placeholder="email@exemplo.com" required>
+                </label>
+                <label class="form-group">Senha
+                    <input type="password" name="senha" placeholder="******" required>
+                </label>
+                <button type="submit" class="btn btn-primary" id="btnLogin">Entrar</button>
+                <p class="modal-footer">
+                    <a href="#" id="linkEsqueciSenha">Esqueci minha senha</a><br>
+                    Não tem conta? <a href="#" id="linkCadastroFromLogin">Cadastre-se</a>
+                </p>
+            </form>
+        </article>
+    </dialog>
+
+    <dialog class="modal-overlay" id="modalInteresse">
+        <article class="modal">
+            <button class="modal-close" id="closeInteresseModal" aria-label="Fechar">&times;</button>
+            <h2>Demonstrar interesse</h2>
+            <form id="formInteresse">
+                <input type="hidden" name="doacao_id" id="interesseDoacaoId">
+                <label class="form-group">Mensagem
+                    <textarea name="mensagem" rows="3" placeholder="Gostaria de ajudar com..."></textarea>
+                </label>
+                <button type="submit" class="btn btn-primary" id="btnEnviarInteresse">Enviar interesse</button>
+            </form>
+        </article>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" charset="UTF-8"></script>
+    <script src="assets/js/app.js?v=8" charset="UTF-8"></script>
+</body>
+</html>
