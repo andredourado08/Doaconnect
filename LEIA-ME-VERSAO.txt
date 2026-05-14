@@ -1,4 +1,0 @@
-SITE_TESTE_PONTOS_DOACAO
-
-Versao nova de teste focada em pontos de doacao, filtros por categoria, endereco, horario e botoes de mapa/fonte.
-Agora esta convertida para HTML/CSS/JavaScript estatico e pronta para Vercel.
