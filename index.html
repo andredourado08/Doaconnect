@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doaconnect — Pontos de doação em São José do Rio Preto</title>
+    <meta name="description" content="Encontre pontos de doação em São José do Rio Preto, filtre por item e confirme endereço, horário e contato antes de doar.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#5fc2ba">
+    <link rel="canonical" href="https://doaconnect.vercel.app/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Doaconnect">
+    <meta property="og:title" content="Doaconnect — Encontre onde doar em SJRP">
+    <meta property="og:description" content="Consulte pontos de doação, itens aceitos, contatos e rotas em São José do Rio Preto.">
+    <meta property="og:url" content="https://doaconnect.vercel.app/">
+    <meta property="og:image" content="https://doaconnect.vercel.app/assets/img/og-doaconnect.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Doaconnect: doe com propósito e encontre o ponto certo">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Doaconnect — Encontre onde doar em SJRP">
+    <meta name="twitter:description" content="Pontos de doação, contatos e rotas em São José do Rio Preto.">
+    <meta name="twitter:image" content="https://doaconnect.vercel.app/assets/img/og-doaconnect.jpg">
+
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css?v=6">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=4">
+    <link rel="stylesheet" href="assets/css/improvements.css?v=1">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Doaconnect",
+      "url": "https://doaconnect.vercel.app/",
+      "description": "Guia de pontos de doação em São José do Rio Preto.",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Doaconnect",
+        "url": "https://doaconnect.vercel.app/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="header" id="inicio">
+        <div class="container navbar">
+            <a href="#inicio" class="logo" aria-label="Doaconnect, página inicial">
+                <img src="assets/img/doaconnect-logo-mark.png" alt="" class="logo-mark" width="64" height="54" aria-hidden="true">
+                <span>Doaconnect</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+                <a href="#inicio">Início</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#pontos">Pontos</a>
+                <a href="#sobre">Sobre</a>
+                <button type="button" class="btn btn-primary nav-suggestion" data-open-suggestion>
+                    <i class="fas fa-plus" aria-hidden="true"></i> Indicar ponto
+                </button>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#pontos" class="btn btn-outline desktop-donate">
+                    <i class="fas fa-gift" aria-hidden="true"></i> Quero doar
+                </a>
+                <button class="dark-toggle" id="darkToggle" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="navLinks" aria-expanded="false" id="menuToggle">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <div id="toastContainer" class="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+        <section class="hero" aria-labelledby="heroTitle">
+            <div class="container hero-grid">
+                <article class="hero-content">
+                    <span class="hero-badge"><i class="fas fa-map-pin" aria-hidden="true"></i> São José do Rio Preto — SP</span>
+                    <h1 id="heroTitle">Doe com propósito.<br>Encontre o ponto certo.</h1>
+                    <p class="hero-description">Descubra locais que recebem roupas, alimentos, livros, brinquedos e itens de higiene. Consulte os dados e confirme com a instituição antes de sair.</p>
+                    <div class="hero-actions">
+                        <a href="#pontos" class="btn btn-primary"><i class="fas fa-location-dot" aria-hidden="true"></i> Ver pontos de doação</a>
+                        <a href="#filtros" class="btn btn-light"><i class="fas fa-filter" aria-hidden="true"></i> Filtrar por item</a>
+                    </div>
+                </article>
+                <div class="hero-visual" aria-hidden="true">
+                    <span class="hero-pin"><i class="fas fa-map-location-dot"></i></span>
+                    <span class="hero-route"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section container" aria-label="Resumo do projeto">
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div>
+                    <div class="stat-number" id="statDoacoes">5</div>
+                    <div class="stat-label">Pontos mapeados</div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                    <div class="stat-number" id="statCategorias">6</div>
+                    <div class="stat-label">Categorias de doação</div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-box-open" aria-hidden="true"></i></div>
+                    <div class="stat-number" id="statItens">17</div>
+                    <div class="stat-label">Tipos de itens aceitos</div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-school" aria-hidden="true"></i></div>
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Projeto escolar</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="container" aria-labelledby="ctaTitle">
+            <aside class="cta-section">
+                <div class="cta-content">
+                    <h2 id="ctaTitle">Tem algo para doar?</h2>
+                    <p>Escolha uma categoria, encontre um local e fale com a instituição antes de levar os itens.</p>
+                </div>
+                <a href="#pontos" class="cta-btn"><i class="fas fa-map-pin" aria-hidden="true"></i> Encontrar um ponto</a>
+            </aside>
+        </section>
+
+        <section class="steps-section" id="como-funciona" aria-labelledby="stepsTitle">
+            <div class="container">
+                <h2 class="section-title" id="stepsTitle">Como usar o Doaconnect</h2>
+                <p class="section-subtitle">Em três passos você encontra o destino certo para a sua doação.</p>
+                <ol class="steps-grid">
+                    <li class="step-card">
+                        <span class="step-number">1</span>
+                        <figure class="step-icon"><i class="fas fa-box" aria-hidden="true"></i></figure>
+                        <h3>Escolha o item</h3>
+                        <p>Separe roupas, alimentos, livros, brinquedos ou produtos de higiene.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-number">2</span>
+                        <figure class="step-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></figure>
+                        <h3>Encontre um ponto</h3>
+                        <p>Use a busca e os filtros para ver locais que recebem aquele tipo de doação.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-number">3</span>
+                        <figure class="step-icon"><i class="fas fa-phone" aria-hidden="true"></i></figure>
+                        <h3>Confirme e doe</h3>
+                        <p>Ligue ou mande mensagem para confirmar horários e necessidades atuais.</p>
+                    </li>
+                </ol>
+                <aside class="connection-notice" aria-labelledby="connectionNoticeTitle">
+                    <i class="fas fa-people-arrows-left-right" aria-hidden="true"></i>
+                    <div>
+                        <h3 id="connectionNoticeTitle">O Doaconnect é apenas uma ponte</h3>
+                        <p>A entrega das doações não é realizada nem intermediada pelos responsáveis pelo site. O Doaconnect apenas conecta quem quer doar às instituições e aos pontos de doação. A entrega e qualquer combinação são feitas diretamente entre o doador e o local escolhido.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="donations-section" id="pontos" aria-labelledby="pointsTitle">
+            <div class="container">
+                <header class="section-header">
+                    <div>
+                        <p class="section-eyebrow">Consulta rápida</p>
+                        <h2 id="pointsTitle"><i class="fas fa-map-location-dot" aria-hidden="true"></i> Pontos de doação em SJRP</h2>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-open-suggestion>
+                        <i class="fas fa-plus" aria-hidden="true"></i> Indicar novo ponto
+                    </button>
+                </header>
+
+                <div class="filters-panel" id="filtros">
+                    <label class="search-field" for="pointSearch">
+                        <span>Buscar ponto</span>
+                        <span class="search-input-wrap">
+                            <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                            <input type="search" id="pointSearch" placeholder="Bairro, endereço, instituição ou item" autocomplete="off">
+                        </span>
+                    </label>
+
+                    <div class="filter-group">
+                        <span class="filter-label" id="filterLabel">Filtrar por item</span>
+                        <div class="filter-tabs" role="group" aria-labelledby="filterLabel">
+                            <button type="button" class="filter-tab active" data-filter="todas" aria-pressed="true">Todos</button>
+                            <button type="button" class="filter-tab" data-filter="roupas" aria-pressed="false">Roupas</button>
+                            <button type="button" class="filter-tab" data-filter="alimentos" aria-pressed="false">Alimentos</button>
+                            <button type="button" class="filter-tab" data-filter="higiene" aria-pressed="false">Higiene</button>
+                            <button type="button" class="filter-tab" data-filter="brinquedos" aria-pressed="false">Brinquedos</button>
+                            <button type="button" class="filter-tab" data-filter="saude" aria-pressed="false">Saúde</button>
+                            <button type="button" class="filter-tab" data-filter="moveis" aria-pressed="false">Móveis</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-status">
+                        <p id="activeFilterText">Exibindo todos os pontos.</p>
+                        <button type="button" class="clear-filters" id="clearFilters" hidden>Limpar filtros</button>
+                        <strong class="points-count" id="cardsResultCount" aria-live="polite">5 pontos encontrados</strong>
+                    </div>
+                </div>
+
+                <ul class="cards-grid" id="cardsGrid" aria-label="Resultados da busca"></ul>
+            </div>
+        </section>
+
+        <section class="donation-tips-section" id="dicas" aria-labelledby="tipsTitle">
+            <div class="container">
+                <h2 class="section-title" id="tipsTitle">Antes de doar</h2>
+                <p class="section-subtitle">Pequenos cuidados fazem a doação chegar melhor a quem precisa.</p>
+                <div class="tips-grid">
+                    <article class="tip-card"><i class="fas fa-shirt" aria-hidden="true"></i><h3>Itens limpos</h3><p>Roupas, calçados e brinquedos devem estar limpos e em bom estado.</p></article>
+                    <article class="tip-card"><i class="fas fa-calendar-check" aria-hidden="true"></i><h3>Validade</h3><p>Alimentos e produtos de higiene precisam estar dentro do prazo de validade.</p></article>
+                    <article class="tip-card"><i class="fas fa-phone-volume" aria-hidden="true"></i><h3>Confirmação</h3><p>Ligue ou mande mensagem antes para confirmar horários e necessidades atuais.</p></article>
+                    <article class="tip-card"><i class="fas fa-box-open" aria-hidden="true"></i><h3>Organização</h3><p>Separe por tipo e, se possível, identifique sacolas e caixas.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="school-note-section" id="sobre" aria-labelledby="aboutTitle">
+            <div class="container">
+                <article class="school-note">
+                    <div>
+                        <p class="section-eyebrow">Transparência</p>
+                        <h2 id="aboutTitle">Sobre e confiança</h2>
+                        <p>O Doaconnect é uma proposta escolar criada para informar a comunidade sobre locais que recebem doações em São José do Rio Preto.</p>
+                    </div>
+                    <div>
+                        <p>As necessidades dos locais podem mudar. Por isso, cada card mostra a fonte e a data da última verificação informada.</p>
+                        <ul class="trust-list">
+                            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Confirme telefone, horário e itens aceitos antes de sair.</li>
+                            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Consulte a fonte oficial de cada instituição.</li>
+                            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Use “Reportar dados” quando encontrar informação desatualizada.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="impact-section" aria-labelledby="impactTitle">
+            <div class="container">
+                <h2 class="section-title" id="impactTitle">Impacto esperado</h2>
+                <p class="section-subtitle">Cenários ilustrativos do valor que uma informação confiável pode gerar.</p>
+                <div class="impact-grid">
+                    <article><i class="fas fa-route" aria-hidden="true"></i><h3>Menos deslocamento perdido</h3><p>Quem doa confirma o local e o horário antes de sair.</p></article>
+                    <article><i class="fas fa-box-open" aria-hidden="true"></i><h3>Doações mais úteis</h3><p>Os itens chegam organizados e alinhados às necessidades atuais.</p></article>
+                    <article><i class="fas fa-people-group" aria-hidden="true"></i><h3>Rede mais confiável</h3><p>A comunidade ajuda a manter endereços e contatos atualizados.</p></article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="contato">
+        <div class="container">
+            <nav class="footer-grid" aria-label="Navegação do rodapé">
+                <section class="footer-col"><h2><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> Doaconnect</h2><p>Informando pontos de doação em SJRP.</p></section>
+                <section class="footer-col"><h2>Navegue</h2><ul><li><a href="#inicio">Início</a></li><li><a href="#como-funciona">Como funciona</a></li><li><a href="#pontos">Pontos de doação</a></li><li><a href="#dicas">Antes de doar</a></li></ul></section>
+                <section class="footer-col"><h2>Transparência</h2><ul><li><a href="#sobre">Sobre o projeto</a></li><li><button type="button" class="footer-link-button" data-open-suggestion>Indicar ponto</button></li></ul></section>
+            </nav>
+            <div class="footer-bottom"><span>© 2026 Doaconnect — Projeto escolar de impacto social</span><span class="footer-credit">Site desenvolvido por <a class="developer-link" href="https://www.instagram.com/kdsolutions.br/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da KD-Solutions">KD-Solutions</a></span></div>
+        </div>
+    </footer>
+
+    <dialog class="suggestion-dialog" id="suggestionDialog" aria-labelledby="suggestionTitle" aria-describedby="suggestionHelp">
+        <form method="dialog" class="suggestion-form" id="suggestionForm">
+            <header class="dialog-header">
+                <div><p class="section-eyebrow">Colabore com o mapa</p><h2 id="suggestionTitle">Indicar ponto de doação</h2></div>
+                <button type="button" class="modal-close" data-close-dialog aria-label="Fechar formulário">×</button>
+            </header>
+            <p id="suggestionHelp" class="dialog-help">Preencha o que souber. Nesta versão estática, suas respostas serão baixadas em um arquivo para você encaminhar à equipe.</p>
+
+            <div class="form-grid">
+                <label class="form-group">Tipo de colaboração
+                    <select name="tipo" id="suggestionType" required>
+                        <option value="novo">Novo ponto</option>
+                        <option value="correcao">Corrigir informação</option>
+                    </select>
+                </label>
+                <label class="form-group">Nome do local
+                    <input type="text" name="nome" id="suggestionPointName" required autocomplete="organization" placeholder="Ex.: Associação do bairro">
+                </label>
+                <label class="form-group form-span">Endereço e bairro
+                    <input type="text" name="endereco" required autocomplete="street-address" placeholder="Rua, número e bairro">
+                </label>
+                <label class="form-group">Telefone ou WhatsApp
+                    <input type="tel" name="contato" autocomplete="tel" placeholder="(17) 99999-9999">
+                </label>
+                <label class="form-group">Site ou fonte oficial
+                    <input type="url" name="fonte" inputmode="url" placeholder="https://">
+                </label>
+                <label class="form-group form-span">Itens aceitos
+                    <textarea name="itens" rows="2" required placeholder="Roupas, alimentos, brinquedos..."></textarea>
+                </label>
+                <label class="form-group form-span">Observações
+                    <textarea name="observacoes" rows="3" placeholder="Horários, campanhas ou informação que precisa ser corrigida"></textarea>
+                </label>
+            </div>
+
+            <label class="consent-field"><input type="checkbox" name="consentimento" required> Confirmo que posso compartilhar estas informações para avaliação do projeto.</label>
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-light" data-close-dialog>Cancelar</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-download" aria-hidden="true"></i> Baixar indicação</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="assets/data/donation-points.js?v=1" charset="utf-8" defer></script>
+    <script src="assets/js/app.js?v=12" charset="utf-8" defer></script>
+</body>
+</html>
